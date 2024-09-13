@@ -1,6 +1,6 @@
 # nx-uv
 
-A [uv] plugin for Nx.
+A [uv](https://docs.astral.sh/uv/) plugin for Nx.
 
 ## Usage
 
