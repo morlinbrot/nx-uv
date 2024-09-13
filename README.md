@@ -20,3 +20,9 @@ The plugin provides uv executors that you can add to your project's `project.jso
     }
 }
 ```
+
+## Recipes
+
+```sh
+nx generate @nx/plugin:executor --nameAndDirectoryFormat=as-provided --directory=src/executors --name=run
+```
