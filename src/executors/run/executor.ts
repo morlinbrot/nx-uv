@@ -1,5 +1,5 @@
 import { ExecutorContext } from "@nx/devkit";
-import baseExecutor, { RunCommandsOptions } from "nx/src/executors/run-commands/run-commands.impl";
+import baseExecutor from "nx/src/executors/run-commands/run-commands.impl";
 import { RunExecutorSchema } from "./schema";
 
 export default async function executor(options: RunExecutorSchema, context: ExecutorContext) {
@@ -8,10 +8,10 @@ export default async function executor(options: RunExecutorSchema, context: Exec
 
   const command = `uv run ${options.command}`;
 
-  const opts: RunCommandsOptions = {
-    __unparsed__: [],
+  const opts = {
     command,
     cwd,
+    ...options.runCommandsOpts,
   };
 
   return baseExecutor(opts, context);

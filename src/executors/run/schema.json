@@ -8,6 +8,46 @@
     "command": {
       "type": "string",
       "description": "The command to run"
+    },
+    "runCommandsOpts": {
+      "type": "object",
+      "description": "Subset of the nx:run-commands options (Omit<RunCommandsOptions, 'command' | 'commands' | 'cwd'>)",
+      "properties": {
+        "parallel": {
+          "type": "boolean",
+          "description": "Run commands in parallel.",
+          "default": true,
+          "x-priority": "important"
+        },
+        "readyWhen": {
+          "type": "string",
+          "description": "String to appear in `stdout` or `stderr` that indicates that the task is done. When running multiple commands, this option can only be used when `parallel` is set to `true`. If not specified, the task is done when all the child processes complete."
+        },
+        "args": {
+          "type": "string",
+          "description": "Extra arguments. You can pass them as follows: nx run project:target --args='--wait=100'. You can then use {args.wait} syntax to interpolate them in the workspace config file. See example [above](#chaining-commands-interpolating-args-and-setting-the-cwd)"
+        },
+        "envFile": {
+          "type": "string",
+          "description": "You may specify a custom .env file path."
+        },
+        "color": {
+          "type": "boolean",
+          "description": "Use colors when showing output of command.",
+          "default": false
+        },
+        "__unparsed__": {
+          "hidden": true,
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "$default": {
+            "$source": "unparsed"
+          },
+          "x-priority": "internal"
+        }
+      }
     }
   },
   "required": ["command"]
